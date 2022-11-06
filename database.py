@@ -1,20 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
 
-# # default
-# engine = create_engine("mysql://scott:tiger@localhost/foo")
-
-# # mysqlclient (a maintained fork of MySQL-Python)
-# engine = create_engine("mysql+mysqldb://scott:tiger@localhost/foo")
-
-# # PyMySQL
-# engine = create_engine("mysql+pymysql://scott:tiger@localhost/foo")
-
-
-# SQLALCHEMY_DATABASE_URL = "mysql://user:password@mysql/db"
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+DB_PASS = os.environ.get("DB_PASS")
+SQLALCHEMY_DATABASE_URL = f"mysql://root:{DB_PASS}@localhost:3306/projetoMegaDados"
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
